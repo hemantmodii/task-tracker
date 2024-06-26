@@ -1,4 +1,3 @@
-import { set } from 'lodash';
 import React, { useState } from 'react'
 
 const AddTask = ({taskList, setTaskList}) => {
