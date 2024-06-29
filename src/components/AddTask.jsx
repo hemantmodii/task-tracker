@@ -27,8 +27,20 @@ const AddTask = ({taskList, setTaskList}) => {
     if(!projectName) {
       setErrorMessage("Enter Project Name to continue")
     } else 
-    {setTaskList(
-      [...taskList, {projectName, taskDescription}]);
+    {
+      let timeStamp = new Date();
+      let tempList = taskList;
+      tempList.push({
+        projectName,
+        taskDescription,
+        timeStamp: timeStamp,
+        duration: 0
+      })
+      localStorage.setItem("taskList", JSON.stringify(tempList))
+      window.location.reload()
+      setTaskList(
+      [...taskList, {projectName, taskDescription, timeStamp: timeStamp}]);
+      setAddModal(false);
     setProjectName("");
     setTaskDescription("");}
   }
